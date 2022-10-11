@@ -138,7 +138,7 @@ export default function Dashboard(props) {
             <Box>
               <Navbar
                 onOpen={onOpen}
-                logoText={"SuperMarket UI Dashboard PRO"}
+                logoText={"Scoliosis UI Dashboard PRO"}
                 brandText={getActiveRoute(routes)}
                 secondary={getActiveNavbar(routes)}
                 message={getActiveNavbarText(routes)}

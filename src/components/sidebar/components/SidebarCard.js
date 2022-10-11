@@ -66,11 +66,11 @@ export default function SidebarDocs() {
           mb="14px"
           textAlign="center"
         >
-          Improve your development process and start doing more with SuperMarket
+          Improve your development process and start doing more with Scoliosis
           UI PRO!
         </Text>
       </Flex>
-      <Link href="https://SuperMarket-ui.com/pro">
+      <Link href="https://Scoliosis-ui.com/pro">
         <Button
           bg="whiteAlpha.300"
           _hover={{ bg: "whiteAlpha.200" }}
