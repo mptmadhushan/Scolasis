@@ -65,9 +65,11 @@ export default function Marketplace() {
         SpineAngle: angle,
       })
       .then((response) => {
-        setRespo(response);
-        const doct = response.Doctors.replace(/"/g, "");
-        setDoc(doct);
+        console.log(response.data)
+        setRespo(response.data);
+        const doctData = response.data.Doctors.replace(/"/g, "");
+        console.log('doc',doct)
+        // setDoc(doctData);
       });
     // try {
     //   const response = await axios({
@@ -171,9 +173,9 @@ export default function Marketplace() {
               py="18px"
             >
               <Text color={textColor} fontSize="xl" fontWeight="600">
-                History
+                Doctors
               </Text>
-              <Button variant="action">See all</Button>
+              
             </Flex>
             {doct.map((text) => (
               <HistoryItem name={text} author="dextroscoliosis" image={Nft6} />
