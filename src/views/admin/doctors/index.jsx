@@ -26,7 +26,7 @@ export default function Marketplace() {
   // Chakra Color Mode
   const textColor = useColorModeValue("secondaryGray.900", "white");
   const [parsedCsvData, setParsedCsvData] = React.useState([]);
-
+  // const bgColor = "linear-gradient(135deg, #868CFF 0%, #4318FF 100%)";
   useEffect(() => {}, []);
   return (
     <Box pt={{ base: "180px", md: "80px", xl: "80px" }}>

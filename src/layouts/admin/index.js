@@ -111,6 +111,7 @@ export default function Dashboard(props) {
   };
   document.documentElement.dir = "ltr";
   const { onOpen } = useDisclosure();
+  // const bgColor = "linear-gradient(135deg, #4318FF 100%, #868CFF 100%)";
   return (
     <Box>
       <SidebarContext.Provider
@@ -122,6 +123,7 @@ export default function Dashboard(props) {
         <Sidebar routes={routes} display="none" {...rest} />
         <Box
           float="right"
+          // bg={bgColor}
           minHeight="100vh"
           height="100%"
           overflow="auto"
