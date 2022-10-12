@@ -16,6 +16,7 @@ import axios from "axios";
 
 import HistoryItem from "views/admin/scoliosis/components/HistoryItem";
 import Card from "components/card/Card.js";
+import tableDataColumns from "views/admin/dataTables/variables/tableDataColumns.json";
 
 export default function Marketplace() {
   // Chakra Color Mode
@@ -33,30 +34,17 @@ export default function Marketplace() {
       camera_id: 1,
     },
   });
-  const MINUTE_MS = 6000;
+  const scoTypes = [
+    "idiopathic",
+    "juvenile",
+    "kyphosis",
+    "levoscoliosis",
+    "dextroscoliosis",
+  ];
+  useEffect(() => {}, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      capture();
-    }, MINUTE_MS);
-
-    return () => clearInterval(interval);
-  }, []);
-  const webcamRef = React.useRef(null);
-  const capture = React.useCallback(() => {
-    const imageSrc = webcamRef.current.getScreenshot();
-    fetch(imageSrc)
-      .then((res) => res.blob())
-      .then((blob) => {
-        const file = new File([blob], "Filename", { type: "image/png" });
-        console.log("🚀 ~ file: index.js ~ line 84 ~ .then ~ file", file);
-        setSelectedFile(file);
-        handleSubmit(file);
-      });
-  }, [webcamRef]);
   const handleSubmit = async () => {
     const formData = new FormData();
-   ;
     try {
       const response = await axios({
         method: "post",
@@ -93,19 +81,10 @@ export default function Marketplace() {
             <Flex
               mt="45px"
               mb="20px"
-              justifyContent="space-between"
+              justifyContent="space-around"
               direction={{ base: "column", md: "row" }}
               align={{ base: "start", md: "center" }}
             >
-              <Input
-                type="text"
-                fontWeight="500"
-                variant="main"
-                placeholder={"Type"}
-                _placeholder={{ fontWeight: "400", color: "secondaryGray.600" }}
-                h="44px"
-                maxh="44px"
-              ></Input>
               <Input
                 type="text"
                 fontWeight="500"
@@ -114,15 +93,19 @@ export default function Marketplace() {
                 _placeholder={{ fontWeight: "400", color: "secondaryGray.600" }}
                 h="44px"
                 maxh="44px"
+                mr="20px"
               ></Input>
-              <Button
-                onClick={() => {
-                  handleSubmit();
-                }}
-                variant="action"
-              >
-              submit
-              </Button>
+              {scoTypes.map((name, index) => (
+                <Button
+                  ml="30px"
+                  mr="30px"
+                  onClick={() => {
+                    handleSubmit(name);
+                  }}
+                >
+                  {name}
+                </Button>
+              ))}
             </Flex>
           </Flex>
           <Card p="0px">
@@ -134,7 +117,7 @@ export default function Marketplace() {
               py="18px"
             >
               <Text color={textColor} fontSize="xl" fontWeight="600">
-              abc
+                abc
               </Text>
               <Button variant="action">Submit</Button>
             </Flex>

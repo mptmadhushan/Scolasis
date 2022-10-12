@@ -36,12 +36,13 @@ function Sidebar(props) {
   // Chakra Color Mode
   let sidebarBg = useColorModeValue("white", "navy.800");
   let sidebarMargins = "0px";
+  const bgColor = "linear-gradient(135deg, #868CFF 0%, #4318FF 100%)";
 
   // SIDEBAR
   return (
     <Box display={{ sm: "none", xl: "block" }} position='fixed' minH='100%'>
       <Box
-        // bg={sidebarBg}
+        bg={bgColor}
         transition={variantChange}
         w='300px'
         h='100vh'

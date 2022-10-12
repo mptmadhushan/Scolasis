@@ -37,8 +37,8 @@ export default function Marketplace() {
         display={{ base: "block", xl: "grid" }}
       >
         <Flex
-          flexDirection="column"
-          gridArea={{ xl: "1 / 1 / 2 / 3", "2xl": "1 / 1 / 2 / 2" }}
+          flexDirection="row"
+          gridArea={{ xl: "1 / 1 / 1 / 4", "2xl": "1 / 1 / 2 / 2" }}
         >
           <Flex direction="column">
             <Flex
@@ -57,18 +57,16 @@ export default function Marketplace() {
                   py="18px"
                 ></Flex>
                 {respo.map(({ Treatment, Description, ImageUrl }) => (
-                  <Flex mt="45px" mb="20px" justifyContent="space-between">
+                  <div>
                     <Image
                       src={ImageUrl}
-                      w={{ base: "30%", "3xl": "100%" }}
+                      w={{ base: "100%", "3xl": "100%" }}
                       h={{ base: "30%", "3xl": "100%" }}
                       borderRadius="10px"
                     />
-                    <Flex mt="45px" mb="20px" justifyContent="space-between">
-                      <p key={Treatment}> {Treatment}</p>
-                      <p key={Description}> {Description}</p>
-                    </Flex>
-                  </Flex>
+                    <p key={Treatment}> {Treatment}</p>
+                    <p key={Description}> {Description}</p>
+                  </div>
                 ))}
               </Card>
             </Flex>

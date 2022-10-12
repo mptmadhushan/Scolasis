@@ -50,7 +50,7 @@ export default function ColumnsTable(props) {
   const borderColor = useColorModeValue("gray.200", "whiteAlpha.100");
   return (
     <Card
-      direction='column'
+      direction='row'
       w='100%'
       px='0px'
       overflowX={{ sm: "scroll", lg: "hidden" }}>

@@ -4,7 +4,6 @@ import { Icon } from "@chakra-ui/react";
 import { MdAccessibilityNew, MdOutlineToday, } from "react-icons/md";
 
 // Admin Imports
-
 import Doctors from "views/admin/doctors";
 import Scoliosis from "views/admin/scoliosis";
 import Treatments from "views/admin/treatments";
