@@ -59,29 +59,38 @@ export default function Marketplace() {
 
   const handleSubmit = async (name) => {
     var data = { ScoliosisType: name, SpineAngle: angle };
-
-    try {
-      const response = await axios({
-        method: "post",
-        url: " http://localhost:5000/scoliosis",
-        data: data,
-        headers: { "Content-Type": "multipart/form-data" },
+    axios
+      .post("http://localhost:5000/scoliosis", {
+        ScoliosisType: name,
+        SpineAngle: angle,
+      })
+      .then((response) => {
+        setRespo(response);
+        const doct = response.Doctors.replace(/"/g, "");
+        setDoc(doct);
       });
+    // try {
+    //   const response = await axios({
+    //     method: "post",
+    //     url: " http://localhost:5000/scoliosis",
+    //     data: data,
+    //     headers: { "Content-Type": "multipart/form-data" },
+    //   });
 
-      setRespo({
-        Doctors:
-          "['Dr Jeremy Kellerstein Toronto ON ', 'Dr STEPHEN C. SORENSON Elgin IL ', 'Dr PAVAN K. PAMADURTHI SHERMAN TX ', 'Dr Mark Reichman Vancouver BC ', 'Dr Sarah Davidson Dartmouth NS ']",
-        ImageUrl:
-          "https://www.verywellhealth.com/thmb/oncFMv1SO2ffNipXRRUPA8HIt1E=/1500x1000/filters:no_upscale():max_bytes(150000):strip_icc()/scoliosis-lateral-curve-of-the-spine-2548780-color-V1-c044832970b94ee1ac37556aa3e3e8f9.png",
-        Treatment: "Observation",
-        Description:
-          "The advantage of watching and waiting is that many cases of scoliosis may not need treatment with a�brace, or�surgery. Many experts believe that mild cases of scoliosis do not have a large impact upon a person�s health. But is this really true? Some scientists have found that, actually, mild cases of scoliosis can�limit the body�s ability to exercise effectively. Sometimes, too, even a small scoliosis can cause pain or other problems. Even if the scoliosis isn�t getting worse, wouldn�t it be nice to have an option that could help your loved one achieve their full athletic potential, or take away some of the pain or sleeplessness they may be experiencing as a result of their scoliosis? In most cases for young people with small curves, CLEAR Scoliosis Treatment does not require as large of a commitment as it does with more severe cases. Some people with small curves have achieved the results they wanted after only a few weeks of care. Also, CLEAR Certified Doctors of Chiropractic can teach your loved one some important exercises for their spine that may be helpful in the future.",
-      });
-      const doct = response.Doctors.replace(/"/g, "");
-      setDoc(doct);
-    } catch (error) {
-      console.log(error);
-    }
+    //   setRespo({
+    //     Doctors:
+    //       "['Dr Jeremy Kellerstein Toronto ON ', 'Dr STEPHEN C. SORENSON Elgin IL ', 'Dr PAVAN K. PAMADURTHI SHERMAN TX ', 'Dr Mark Reichman Vancouver BC ', 'Dr Sarah Davidson Dartmouth NS ']",
+    //     ImageUrl:
+    //       "https://www.verywellhealth.com/thmb/oncFMv1SO2ffNipXRRUPA8HIt1E=/1500x1000/filters:no_upscale():max_bytes(150000):strip_icc()/scoliosis-lateral-curve-of-the-spine-2548780-color-V1-c044832970b94ee1ac37556aa3e3e8f9.png",
+    //     Treatment: "Observation",
+    //     Description:
+    //       "The advantage of watching and waiting is that many cases of scoliosis may not need treatment with a�brace, or�surgery. Many experts believe that mild cases of scoliosis do not have a large impact upon a person�s health. But is this really true? Some scientists have found that, actually, mild cases of scoliosis can�limit the body�s ability to exercise effectively. Sometimes, too, even a small scoliosis can cause pain or other problems. Even if the scoliosis isn�t getting worse, wouldn�t it be nice to have an option that could help your loved one achieve their full athletic potential, or take away some of the pain or sleeplessness they may be experiencing as a result of their scoliosis? In most cases for young people with small curves, CLEAR Scoliosis Treatment does not require as large of a commitment as it does with more severe cases. Some people with small curves have achieved the results they wanted after only a few weeks of care. Also, CLEAR Certified Doctors of Chiropractic can teach your loved one some important exercises for their spine that may be helpful in the future.",
+    //   });
+    //   const doct = response.Doctors.replace(/"/g, "");
+    //   setDoc(doct);
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
   const videoConstraints = {
     width: 1280,

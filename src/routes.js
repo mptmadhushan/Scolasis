@@ -7,6 +7,7 @@ import { MdAccessibilityNew, MdOutlineToday, } from "react-icons/md";
 import Doctors from "views/admin/doctors";
 import Scoliosis from "views/admin/scoliosis";
 import Treatments from "views/admin/treatments";
+import Chat from "views/admin/ChatBot";
 
 const routes = [
   {
@@ -47,6 +48,21 @@ const routes = [
       />
     ),
     component: Treatments,
+    secondary: true,
+  },
+  {
+    name: "ChatBot",
+    layout: "/admin",
+    path: "/chatbot",
+    icon: (
+      <Icon
+        as={MdOutlineToday}
+        width="20px"
+        height="20px"
+        color="inherit"
+      />
+    ),
+    component: Chat,
     secondary: true,
   },
 ];
